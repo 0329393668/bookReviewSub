@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
             //CategorySeeder::class,
             //CommentSeeder::class,
             //ConfigSeeder::class,
-            MenuSeeder::class,
+//            MenuSeeder::class,
             //ReviewSeeder::class,
             //SeoSeeder::class,
         ]);

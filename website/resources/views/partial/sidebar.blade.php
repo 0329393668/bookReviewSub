@@ -88,6 +88,12 @@
                         <li><a href="{{route('admin.seo.index')}}"><i class="ri-profile-fill"></i>Danh sách seo</a></li>
                     </ul>
                 </li>
+                <li>
+                    <a href="#doctor-info" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="false"><i class="ri-file-word-fill"></i><span>Blogs</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                    <ul id="doctor-info" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                        <li><a href="{{ route('blog') }}"><i class="ri-profile-fill"></i>Danh sách blog</a></li>
+                    </ul>
+                </li>
 {{--                <li><a href="calendar.html" class="iq-waves-effect"><i class="ri-calendar-event-fill"></i><span>Calendar</span></a></li>--}}
 
 {{--                <li><a href="chat.html" class="iq-waves-effect"><i class="ri-message-fill"></i><span>Chat</span></a></li>--}}

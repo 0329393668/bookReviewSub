@@ -8,6 +8,12 @@ use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\Admin\SeoController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Postcontroller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +33,12 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'admin'], function () {
     Route::get('/',[AdminController::class,'index'])->name("admin.index");
+    Route::get('/register',[RegisterController::class,'showAdminRegistrationForm'])->name("admin.auth.register");
+    Route::post('/register',[RegisterController::class,'storeAdminAccount'])->name("admin.auth.register.store");
+    Route::get('/login',[LoginController::class,'showAdminLoginForm'])->name("admin.auth.login");
+    Route::post('/login',[LoginController::class,'adminLogin'])->name("admin.auth.login.store");
+
+
     Route::group(['prefix' => 'category'], function () {
         Route::get('/',[CategoryController::class,'index'])->name("admin.category.index");
         Route::get('/add', [CategoryController::class,'add'])->name('admin.category.add');
@@ -70,4 +82,26 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/',[ConfigController::class,'index'])->name("admin.config.index");
     });
 });
+
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/tinymce', function () {
+    return view('tinymce');
+});
+
+Route::get('/add', [PostController::class,'add'])->name('post.add');
+Route::post('/add', [PostController::class,'store'])->name('post.store');
+Route::get('/detail/{id}', [PostController::class,'detail'])->name('post.detail');
+Route::get('/edit/{id}', [PostController::class,'edit'])->name('post.edit');
+Route::post('/edit/{id}', [PostController::class,'update'])->name('post.update');
+
+Route::get('/media', [HomeController::class,'media']);
+
+Route::get('/blog', [BlogController::class, 'blog'])->name('blog');
+
+Route::get('/book', [HomeController::class,'book']);
+Route::get('/product', [HomeController::class,'product']);
 
